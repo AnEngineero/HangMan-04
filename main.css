@@ -1,0 +1,8 @@
+.pic{
+  height: 400px;
+  width: auto;
+}
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
