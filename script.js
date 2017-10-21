@@ -22,9 +22,9 @@ function newGame() {
 
   function ending() {
     //game = false;
-    var extra = didWin ? 'won the game. Congratulations!' : 'lost the game. The word was ' + word.join('') + '. Try again.';
-    document.body.innerHTML = "<h1 id='life'>You have " + extra + '</h1>';
-    document.body.innerHTML += "<button type='button' name='button' id ='replay'>Replay</button>";
+    var extra = didWin ? 'vunnit spelet!' : 'förlorat spelet. Ordet var ' + word.join('') + '. Försök igen.';
+    document.body.innerHTML = "<h1 id='life'>Du har " + extra + '</h1>';
+    document.body.innerHTML += "<button type='button' name='button' id ='replay'>Spela om</button>";
     document.getElementById('replay').addEventListener('click', function() {
       console.log('new game starting...');
       document.body = gameScreen.cloneNode(true);
@@ -34,8 +34,8 @@ function newGame() {
   function uppdate(lifeLeft) {
     console.log(hiddenWord);
     document.getElementById('hangMan').src = 10 - lifeLeft + '.png';
-    document.getElementById('word').innerHTML = hiddenWord.join(' ');
-    document.getElementById('life').innerHTML = life;
+    document.getElementById('theWord').innerHTML = hiddenWord.join(' ');
+    document.getElementById('lifePoints').innerHTML = life;
     guessesMade.push(letter);
   }
   uppdate(life);
@@ -45,6 +45,7 @@ function newGame() {
       letter = e.target.id;
       if (guessesMade.includes(letter)) {
         console.log('You have already guessed that');
+        alert('Du har redan försökt med ' + letter);
       } else if (word.includes(letter)) {
         for (var i = 0; i < word.length; i++) {
           if (word[i] === letter) {
